@@ -1,0 +1,6 @@
+{
+  "replayed_trajectories": 96,
+  "all_scores_and_states_match": true,
+  "source_and_task_hashes_match": true,
+  "model_matches_pinned_manifest": false
+}

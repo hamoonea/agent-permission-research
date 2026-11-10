@@ -1,0 +1,1 @@
+"""Synthetic workplace permission benchmark."""
