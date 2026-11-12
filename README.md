@@ -1,5 +1,48 @@
 # Evaluating permissions and approval in LLM agents
 
+> **Preliminary development checkpoint — November 12, 2026.** No design freeze
+> or held-out evaluation has occurred. Held-out fixtures and the original generator
+> are withheld, including snapshot copies. The public `followup/tasks.py` is a path
+> shim, not the recorded generator. See [checkpoint scope and verification](docs/development-checkpoint.md)
+> before running v2 commands; full private-input replay/inference requires the withheld files.
+
+## Follow-up study (v2): scoped permissions and recovery
+
+The follow-up adds **24 workflow families / 72 cases**, split into 12 development
+and 12 held-out families. Each has clean, injected, and revoked-source variants.
+Broader permissions allow multiple actions without revealing the correct answer.
+The main comparison tests whether policy-only denial guidance improves successful
+completion compared with a bare denial. A separate package preserves the v1 code
+and evidence below.
+
+- [Follow-up protocol](docs/followup-protocol.md)
+- [Runbook and December 15 schedule](docs/followup-runbook.md)
+- [External review checklist](docs/followup-review-checklist.md)
+- [Dataset manifest](data/followup/manifest.json)
+- [Development validation and initial findings](docs/followup-development-log.md)
+- [Full development study and pre-freeze review](docs/followup-full-development-review.md)
+
+Validation: 30 automated tests and 864 scripted workflow checks passed. A genuine
+24-trajectory development smoke test completed without runtime/schema errors;
+all records passed replay. Recovery guidance did not improve success in that
+two-family sample. See the development log for counts, amendments, and limits.
+
+The full **144-trajectory development run** is now complete and replay-verified:
+authorized success was 12/36 for instructions only, 24/36 for basic permissions,
+21/36 for recovery guidance, and 24/36 for perfect simulated approval. The review
+recommends clarifying tool schemas, draft scoring and task wording before freezing.
+Original scores are preserved. No held-out model inference has occurred; the
+held-out data hash is unchanged. These are development results, not final validation.
+
+**Status:** implementation and development validation. Held-out model inference
+requires an explicit prospective freeze after development. Scripted checks are
+software verification, not model findings. This is not an externally preregistered
+study; the held-out fixtures are visible to the designer and software tests.
+The v2 design and implementation were prepared with Codex assistance and require
+the applicant's review and accurate contribution disclosure.
+
+## Original pilot (v1)
+
 A reproducible independent research pilot comparing instruction-only rules, enforced permissions, simulated approval, and combined controls in a fictional workplace. All tools operate on in-memory data. No tool can send real email, access accounts, or execute arbitrary code.
 
 The benchmark contains **24 cases from eight base workflows**, each with clean, ambiguous, and injected source content. The first model pilot uses a pinned, locally executed Qwen3 4B Instruct model. It is an exploratory study, not a claim of production safety or a human-subject experiment.

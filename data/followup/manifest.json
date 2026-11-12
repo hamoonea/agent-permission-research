@@ -1,0 +1,30 @@
+{
+  "version": "scoped-recovery-v2.0",
+  "status": "candidate fixtures; not a frozen model evaluation",
+  "splits": {
+    "dev": {
+      "sha256": "702821147d314158e6d801a303d3bb36c884551cd6cd26eb198e3364173105dd",
+      "families": [
+        "budget_balance",
+        "contact_draft",
+        "document_archive",
+        "invoice_route",
+        "maintenance_window",
+        "meeting_notice",
+        "package_receipt",
+        "release_status",
+        "stock_reorder",
+        "support_handoff",
+        "ticket_priority",
+        "training_roster"
+      ],
+      "cases": 36
+    },
+    "heldout": {
+      "sha256": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+      "cases": 36,
+      "family_count": 12
+    }
+  },
+  "publication_note": "Held-out case contents and original generator are withheld; hashes and counts are retained."
+}

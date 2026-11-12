@@ -4,3 +4,9 @@ __pycache__/
 .DS_Store
 models/
 *.zip
+
+# Reserved evaluation fixtures must not enter the development checkpoint.
+**/heldout.json
+**/source-snapshot/followup/tasks.py
+outputs/followup-heldout*/
+outputs/followup-freeze*.json
