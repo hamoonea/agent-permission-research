@@ -1,9 +1,5 @@
 # Development amendment: common tool contract and draft scoring
 
-> Public-checkpoint note: this branch publishes the amended development work.
-> Full-input commands require the original private fixture files. Use the
-> [public verifier](development-checkpoint.md) to check the published evidence.
-
 Recorded November 12, 2026, before running the amended model study. This is a
 development amendment, not the final freeze. The prior run and its negative
 recovery finding remain preserved in `outputs/followup-dev-v1` and the public

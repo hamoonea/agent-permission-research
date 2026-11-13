@@ -1,6 +1,9 @@
 # Follow-up review checklist
 
-Status: blank review form. No independent review is asserted.
+Status: the user reports that the amended 432-trial study was reviewed with no
+requested changes. The checklist below remains an uncompleted template; the
+reviewer identity, review date and item-level responses have not been supplied.
+See [the readiness review](followup-freeze-readiness-review.md) for the recorded status.
 
 Reviewer: ____________________  Date: ____________________
 Applicant's contributions discussed: ____________________

@@ -1,10 +1,33 @@
 # Evaluating permissions and approval in LLM agents
 
-> **Amended development checkpoint — November 13, 2026.** The 432-trial study is
-> complete. No design freeze or held-out evaluation has occurred. Reserved cases,
-> their generator and snapshot copies remain private. Use the
-> [public verification instructions](docs/development-checkpoint.md); full private-input
-> v2 commands require withheld files. Earlier evidence is preserved in this branch's history.
+> **Complete frozen-study release.** All 432 held-out trials, including all 195
+> unsuccessful trials, are included. The formerly reserved synthetic dataset and
+> original generator are released after evaluation. See the
+> [publication and verification guide](docs/frozen-study-release.md) for portable
+> replay commands and the meaning of historical pre-publication status notes.
+
+## Frozen held-out evaluation complete — November 13, 2026
+
+All **432 held-out trials** completed under the unchanged freeze with three repeats.
+Authorized success: baseline 42/108, permissions 63/108, recovery 69/108 and perfect
+simulated approval 63/108. Recovery's observed gain is **+5.6 percentage points**,
+with a 95% workflow-family bootstrap interval of **[0.0, 13.9]**; the result does
+not establish general superiority. Gains come from two revoked-source cases, and
+three of the six additional successes improve required source access rather than
+the final state. All **195 unsuccessful trajectories** are retained.
+
+See the [held-out report](docs/followup-heldout-results.md) for failure traces,
+repeat stability, a partial-state regression hidden by binary scoring, and limits.
+The primary design, dataset bytes and earlier evidence remain unchanged.
+
+## Design frozen — November 13, 2026
+
+Verification fixes passed 65 tests, 432 scripted development checks and replay of
+all 432 original model records. The local prospective freeze now enforces the
+inference environment and recorded sampling seeds. The subsequent held-out
+evaluation is complete; the dataset bytes are unchanged. See the
+[freeze completion record](docs/followup-freeze-completion.md) for the exact
+settings, checks, scoring limitation and integrity commitments.
 
 ## Latest development revision (v2.1)
 
@@ -13,14 +36,15 @@ replay-verified. Authorized success: 54/108 for instructions only and 102/108
 for each of basic permissions, recovery guidance and perfect simulated approval.
 Recovery guidance showed no observed advantage; a zero observed difference is
 not evidence of general equivalence. All gated failures were budget tasks with
-omitted factual lookups. The held-out dataset remains unchanged and unevaluated.
+omitted factual lookups. These development results preceded the frozen held-out
+evaluation reported above; they remain preserved with their original scores.
 
 - [Amended study results and freeze recommendation](docs/followup-amended-development-review.md)
 - [Changes fixed before inference](docs/followup-amendment-v2.md)
 - [Three-repeat results](outputs/followup-dev-v2-repeats3/results.md)
 
 Nineteen development-focused amendment, diagnostic and repeat-analysis checks
-passed. No design freeze has occurred. The earlier evidence below is preserved
+passed before the subsequent verification update and freeze. The earlier evidence below is preserved
 with its original scoring; these versions should not be pooled as independent trials.
 
 ## Follow-up study (v2): scoped permissions and recovery

@@ -10,19 +10,14 @@ import shutil
 import time
 
 from .core import CONDITIONS, Environment, initial_messages
-from .evidence import digest, inputs, load_tasks, model_identity, positive_int, replay, validate_freeze
+from .evidence import digest, inputs, load_tasks, model_identity, positive_int, replay, trajectory_seed, validate_freeze
+from .runtime import runtime_identity
 
 
 def make_jobs(tasks,repeats,seed):
     jobs=[(t,c,r) for t in tasks for c in CONDITIONS for r in range(repeats)]
     random.Random(seed).shuffle(jobs)
     return jobs
-
-
-def trajectory_seed(seed,task_id,repeat):
-    import hashlib
-    # Common seeds across conditions; different workflows/repeats get different seeds.
-    return int(hashlib.sha256(f'{seed}:{task_id}:{repeat}'.encode()).hexdigest()[:8],16)
 
 
 class MLX:
@@ -127,6 +122,7 @@ def main():
         for k,v in freeze['run_parameters'].items(): setattr(args,k,v)
     elif args.freeze or args.allow_heldout:
         p.error('Freeze options are only for held-out MLX inference')
+    runtime=runtime_identity() if identity else None
     tasks=load_tasks(args.split)
     if args.limit_families:
         names=list(dict.fromkeys(t['family'] for t in tasks))[:args.limit_families]
@@ -137,6 +133,7 @@ def main():
                 conditions=list(CONDITIONS),freeze_sha256=digest(args.freeze) if freeze else None,
                 **{k:getattr(args,k) for k in ('repeats','max_steps','max_tokens','temperature','seed')})
     config['packages']={p:importlib.metadata.version(p) for p in ('mlx','mlx-lm','transformers')} if identity else {}
+    config['runtime']=runtime
     done=set()
     if args.resume:
         old,rows=replay(args.output,complete=False)

@@ -5,10 +5,7 @@ import tempfile
 import subprocess
 import sys
 import unittest
-
-from followup import tasks as fixture_module
-if not hasattr(fixture_module, 'build'):
-    raise unittest.SkipTest('Full private-fixture tests require the withheld generator; use public_checkpoint.verify and development-audit tests')
+from unittest.mock import patch
 
 from followup.core import CONDITIONS,Environment,allowed,initial_messages,valid
 from followup.evidence import inputs,load_tasks,replay,validate_freeze
@@ -148,8 +145,9 @@ class FollowupTests(unittest.TestCase):
         self.assertEqual(result['difference'],1)
 
     def test_freeze_rejects_source_or_model_change(self):
-        freeze=dict(inputs=inputs(),models={'model':{'weights':'abc'}})
-        validate_freeze(freeze,'model',{'weights':'abc'})
+        freeze=dict(inputs=inputs(),models={'model':{'weights':'abc'}},runtime={'fixture':'runtime'})
+        with patch('followup.runtime.runtime_identity',return_value=freeze['runtime']):
+            validate_freeze(freeze,'model',{'weights':'abc'})
         with self.assertRaises(ValueError): validate_freeze(freeze,'model',{'weights':'different'})
         freeze['inputs']={}
         with self.assertRaises(ValueError): validate_freeze(freeze,'model',{'weights':'abc'})
@@ -158,7 +156,7 @@ class FollowupTests(unittest.TestCase):
         task=self.tasks[0]
         rows=[execute(task,c,0,'scripted',12,7,fixture='attack') for c in CONDITIONS]
         config=dict(inputs=inputs(),backend='scripted',split='dev',task_ids=[task['id']],
-                    repeats=1,max_steps=12)
+                    repeats=1,max_steps=12,seed=7)
         with tempfile.TemporaryDirectory() as td:
             p=Path(td); (p/'config.json').write_text(json.dumps(config))
             def put(rs): (p/'trajectories.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rs))

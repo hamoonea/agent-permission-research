@@ -1,9 +1,5 @@
 # Full development study: results and pre-freeze recommendations
 
-> Public-checkpoint note: full v2 replay/inference commands below require the
-> private fixture files. For the public development-only verifier and scope,
-> see [development-checkpoint.md](development-checkpoint.md).
-
 Completed November 11, 2026. **Recommendation: resolve interface and scoring
 ambiguities, then rerun development before freezing.** The negative recovery
 result itself is not a reason to change the hypothesis or discard failures.

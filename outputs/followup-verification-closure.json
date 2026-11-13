@@ -1,0 +1,7 @@
+{
+  "status": "findings resolved; design frozen; held-out evaluation not started",
+  "completion_report": "docs/followup-freeze-completion.md",
+  "completion_report_sha256": "182d46882f4780357b0e32aeadb0cc08423a77565c87eb0eaba6392795307ae2",
+  "readiness_report_current_sha256": "3242f7cfb38aa7e3de666399c11fe90d94a6e16fea9158f6472e8dbae231f0ea",
+  "freeze_sha256": "2378d1f362a12f375fe5962a21a229f1142a31914119e55e9f1dc888ffd11c62"
+}

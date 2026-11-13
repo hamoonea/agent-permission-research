@@ -1,0 +1,37 @@
+{
+  "tests_run": 65,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "all_passed": true,
+  "study_inputs": {
+    "followup/__init__.py": "3a7af2912d1b66e83edbac01711f01d508604d291269e40241d0c723cfcaa070",
+    "followup/analyze.py": "95ad2b0a14e7e3704b3e0c31b46d1d362d79c9c59462d19295e51708ac022258",
+    "followup/core.py": "b385b496be696b28441412af57b186db1711f0c80d267259e11a6715ce54ed10",
+    "followup/evidence.py": "3a3494fa2724eba2de7578701fea69a3fc77f2a5ba6dff63218c151cfe45d5a4",
+    "followup/freeze.py": "ad13c43580dbb832f757c95d1d6af337a631e2315a0af22d4d493ff1e8325649",
+    "followup/run.py": "f9520c9a2288332bba17703797df1af89acb12e953fde9bea4416174e44595dd",
+    "followup/runtime.py": "7255708055a0506b341489d31a40f3e8d42e4708a98f32a49af085e2561f5355",
+    "followup/tasks.py": "981ecfff0c5908887e1d23e1566c334021cfe23f2ad46c4756f75f7a49fac642",
+    "followup/transition.py": "db86eceabb940adbba876808aa2a82be0396272088f6f04c2bc57a2e855ce091",
+    "data/followup/dev.json": "6eb99ead90b893bb13bc52c13292659af6b5dbdd5519f1b3ca8af7d4d193defb",
+    "data/followup/heldout.json": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+    "docs/followup-protocol.md": "c2cbfeddabbc1a9adb36390d1a1d25600cf1b7ea38cf8c111574040d39ed7518",
+    "requirements-mlx-lock.txt": "31527cccc42bc1b13811e2feb8128882ea3183ea7b10f0e22286a1dac9a56b35"
+  },
+  "test_and_analysis_sources": {
+    "tests/test_analysis.py": "c22703e182ef17fcbd91baee49729d734ab351912bf5ac1f29bde43fb4db8fba",
+    "tests/test_core.py": "438a74f4464dca119118314bdb00e06a6b0c13da053c11ae2f1bd9058fa5905f",
+    "tests/test_followup.py": "651d324eaf98a6a3c374c16fd7732168e4d0a726793a48c3932b17f6a36f53f4",
+    "tests/test_followup_amendments.py": "b157633d48ab0216ec4bdc8e898d707e82d498de2392d4d391817308dd67e73c",
+    "tests/test_followup_verification.py": "4dd3abca4d97afb8fa512a841a407324f7da9fe5217c850ae04e54d0c440ad2b",
+    "study_analysis/__init__.py": "937611c4d5633e8778df2420c49f8edf103e582ed55c2ab7178c839d3d49d9a4",
+    "study_analysis/development_audit.py": "1b58f6c5489de314a35dad8a4165ec5e5dd3a19a379b2e6a93390fe6269e0a53",
+    "study_analysis/repeated_development_review.py": "7892e8d63d640df38bf898624669a6744cbd990294920ad52a1418d2741f9cf5",
+    "study_analysis/test_development_audit.py": "93a919443b86ae93a5d3b40be92e3fcf234e27edb48d4a88369531f10cafd258",
+    "study_analysis/test_repeated_development_review.py": "e4130a0678841d3e7bda5caf6933b5229bc4571b2402d280cdc58b95abc1ec3f",
+    "study_analysis/verification_checks.py": "80dad8f304fe9245b136714f0759935493d1ce1b28c5e23c7deec3c932fbcd64"
+  },
+  "original_followup_module_scope": "All tests except full-split generation; setup loads development JSON only.",
+  "heldout_inference_performed": false
+}

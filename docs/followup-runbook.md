@@ -1,8 +1,10 @@
 # Follow-up runbook and completion plan
 
-> Public-checkpoint note: this branch publishes the amended development work.
-> Full-input commands require the original private fixture files. Use the
-> [public verifier](development-checkpoint.md) to check the published evidence.
+Current status: the [frozen held-out evaluation](followup-heldout-results.md) is
+complete with all 432 assigned trials preserved. The commands below document the
+workflow; do not start a replacement evaluation or rewrite the existing freeze.
+The [freeze completion record](followup-freeze-completion.md) describes its earlier
+pre-evaluation state.
 
 The November 12 amendment is documented in [followup-amendment-v2.md](followup-amendment-v2.md).
 The planned amended development run has three repeats (432 trials). It does not
@@ -42,6 +44,17 @@ to avoid downloading or installing anything again. Do not run inference while
 other heavy workloads are using the GPU; timing is descriptive even with warmup.
 
 ## 2. Check the software
+
+For the November 13 verification update, run the complete development-only suite
+in the inference environment. It excludes the original full-split generation test
+and restricts the other original fixture tests to development data:
+
+```sh
+../clinical-ai-research/.venv/bin/python -B -m study_analysis.verification_checks --output outputs/followup-verification-checks-final.json
+```
+
+This record is written once. Use a new name if later source changes require a new
+check, and preserve previous records. The more focused development commands are:
 
 ```sh
 python3 -B -m unittest discover -s tests -p test_followup_amendments.py -v
@@ -92,8 +105,27 @@ Resolve implementation defects and record the final design. A full genuine
 development run is required; scripted checks or a two-family smoke run cannot
 serve as the development evidence. Freeze after the final source/protocol edits.
 
+The November 13 verification update adds environment enforcement and seed checks
+without changing experimental behavior. Its development-transition record verifies
+the unmodified 432-trial evidence against both the original archived implementation
+and the stronger verifier. Ordinary replay/resume still rejects source drift;
+do not rewrite the old run's hashes to make it look as if it used the new verifier.
+The scoring limitation is explicit: source/backup access is required, but every
+supporting read in a reference plan is not independently required.
+
+For this update, create the transition record once, after final source edits:
+
 ```sh
-.venv/bin/python -B -m followup.freeze --development-run outputs/followup-dev-v2-repeats3 --model qwen3-4b=models/qwen3-4b --repeats 3 --temperature 0.2 --max-steps 12 --max-tokens 256 --rationale "Replace this with the actual development-based rationale and review status" --output outputs/followup-freeze.json
+../clinical-ai-research/.venv/bin/python -B -m followup.transition --development-run outputs/followup-dev-v2-repeats3 --output outputs/followup-verification-transition.json --rationale "Verification-only update: enforce frozen runtime and derived seeds; clarify existing scoring without changing experimental behavior."
+```
+
+Use the existing inference environment, whose installed packages must match the
+dependency lock. The freeze captures Python, platform and all installed package
+versions and will reject subsequent drift before loading evaluation tasks or
+initializing a model. Preserve the transition and freeze records once created.
+
+```sh
+../clinical-ai-research/.venv/bin/python -B -m followup.freeze --development-run outputs/followup-dev-v2-repeats3 --development-transition outputs/followup-verification-transition.json --model qwen3-4b=../clinical-ai-research/models/qwen3-4b --repeats 3 --temperature 0.2 --max-steps 12 --max-tokens 256 --seed 20261111 --rationale "Retain the completed three-repeat development design, including budget failures and the null recovery result. Verification-only changes passed archived/current replay and regression checks. User reports external review with no requested changes; reviewer identity/date were not supplied. Scoring requires source/backup access, not all supporting lookups." --output outputs/followup-freeze.json
 ```
 
 For a prespecified second model, add another `--model label=/local/model/path`

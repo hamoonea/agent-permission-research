@@ -1,5 +1,40 @@
 # Development validation log — November 11, 2026
 
+## November 13 frozen held-out evaluation
+
+At the user's explicit request, the frozen Qwen3-4B evaluation completed all
+432 held-out assignments in one session with three repeats, no replacements,
+zero runtime/schema errors and no exhausted budgets. All records passed replay.
+Authorized successes were 42/108 baseline, 63/108 permissions, 69/108 recovery and
+63/108 perfect simulated approval. The primary difference was +5.6 percentage
+points, with the frozen family-cluster interval [0.0, 13.9]. All 195 unsuccessful
+trials remain in the evidence. The observed gain covers two revoked-source cases;
+the detailed report distinguishes final-outcome changes from source-access credit
+and documents a partial-state regression in an already-failed case.
+
+All 13 frozen inputs, model hashes, runtime and dataset bytes remain unchanged.
+The 68 earlier evidence files are preserved. Supplemental descriptive reporting
+was added outside the frozen experiment and checked using development fixtures.
+No design, primary scorer or estimator changed. See the
+[held-out results](followup-heldout-results.md) and linked complete evidence.
+
+## November 13 verification fixes and freeze
+
+The user reported review of the amended 432-trial study with no requested changes
+and authorized a freeze if the remaining verification fixes passed checks.
+Runtime environment enforcement and private replay seed checks are implemented;
+the protocol clarifies that required source/backup access does not imply every
+supporting lookup is enforced. Experimental behavior and original scores are unchanged.
+
+All 65 development-only/pilot/guard tests passed in the inference environment, as
+did a 432-trajectory scripted development run with replay, analysis and no-op
+resume. An explicit transition verified all 432 original model records with both
+archived and current implementations and retained all 68 prior evidence files.
+The prospective freeze was created at 2026-11-13T19:01:54.770000+00:00 and then
+validated against 13 inputs, 12 model files and 39 installed distribution versions.
+No held-out evaluation was started, and its dataset hash is unchanged.
+See the [completion record](followup-freeze-completion.md) and linked evidence.
+
 ## Implemented and checked
 
 - 72 synthetic cases in 24 workflow families; 12 development / 12 held-out.
@@ -121,11 +156,3 @@ performed. The temporary idle-sleep prevention ended with the model process.
 The [full amended review](followup-amended-development-review.md) recommends
 focused human review followed by a freeze of this version, retaining genuine
 model failures and the null development finding.
-
-## Publication — November 13, 2026
-
-The amended implementation and 432-trial results are now included in the public
-development checkpoint. Local-only statements above describe the analysis before
-publication. Reserved fixtures, generator and snapshot copies are excluded.
-See [publication scope and verification](development-checkpoint.md). No freeze
-or held-out inference accompanies publication.

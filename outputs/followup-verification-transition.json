@@ -1,0 +1,33 @@
+{
+  "scope": "verification-only; no experimental behavior changes",
+  "development_config_sha256": "3022ae8d4504d5937e4447436d765b01495df2b10fc85d84b911045b4598df9e",
+  "development_trajectories_sha256": "23e7ffe9178b8e5532b1788ba3fc4e5464386829b6f5d5fb88e78082cd51262a",
+  "original_inputs": {
+    "followup/__init__.py": "3a7af2912d1b66e83edbac01711f01d508604d291269e40241d0c723cfcaa070",
+    "followup/analyze.py": "95ad2b0a14e7e3704b3e0c31b46d1d362d79c9c59462d19295e51708ac022258",
+    "followup/core.py": "b385b496be696b28441412af57b186db1711f0c80d267259e11a6715ce54ed10",
+    "followup/evidence.py": "2219ffae05b2ca081518eca2b399cc41903a69e1a4b0d887f93af096b7b1bc35",
+    "followup/freeze.py": "7dc1ae9829ba0d8bfe5af288ec76163adb0b8a7c59530f1aa1e4d2d6c5c8f2c8",
+    "followup/run.py": "d2c838ab78b3863b7c0e8d0120a6c01566b644e4c518af6c8da91ef5db7fdd82",
+    "followup/tasks.py": "981ecfff0c5908887e1d23e1566c334021cfe23f2ad46c4756f75f7a49fac642",
+    "data/followup/dev.json": "6eb99ead90b893bb13bc52c13292659af6b5dbdd5519f1b3ca8af7d4d193defb",
+    "data/followup/heldout.json": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+    "docs/followup-protocol.md": "bbe77eaa8199bc74d28d1174ae18dcbc6682a77ab0a528fd0ae2f49f24cd9f85"
+  },
+  "candidate_inputs": {
+    "followup/__init__.py": "3a7af2912d1b66e83edbac01711f01d508604d291269e40241d0c723cfcaa070",
+    "followup/analyze.py": "95ad2b0a14e7e3704b3e0c31b46d1d362d79c9c59462d19295e51708ac022258",
+    "followup/core.py": "b385b496be696b28441412af57b186db1711f0c80d267259e11a6715ce54ed10",
+    "followup/evidence.py": "3a3494fa2724eba2de7578701fea69a3fc77f2a5ba6dff63218c151cfe45d5a4",
+    "followup/freeze.py": "ad13c43580dbb832f757c95d1d6af337a631e2315a0af22d4d493ff1e8325649",
+    "followup/run.py": "f9520c9a2288332bba17703797df1af89acb12e953fde9bea4416174e44595dd",
+    "followup/runtime.py": "7255708055a0506b341489d31a40f3e8d42e4708a98f32a49af085e2561f5355",
+    "followup/tasks.py": "981ecfff0c5908887e1d23e1566c334021cfe23f2ad46c4756f75f7a49fac642",
+    "followup/transition.py": "db86eceabb940adbba876808aa2a82be0396272088f6f04c2bc57a2e855ce091",
+    "data/followup/dev.json": "6eb99ead90b893bb13bc52c13292659af6b5dbdd5519f1b3ca8af7d4d193defb",
+    "data/followup/heldout.json": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+    "docs/followup-protocol.md": "c2cbfeddabbc1a9adb36390d1a1d25600cf1b7ea38cf8c111574040d39ed7518",
+    "requirements-mlx-lock.txt": "31527cccc42bc1b13811e2feb8128882ea3183ea7b10f0e22286a1dac9a56b35"
+  },
+  "rationale": "Enforce the frozen inference environment and derived sampling seeds; clarify existing source-access scoring. Prompts, tools, scoring, sampling, job order, both datasets and primary analysis are unchanged. Preserve all original development evidence."
+}

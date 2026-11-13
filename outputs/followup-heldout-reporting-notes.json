@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-11-13T19:10:21.801391+00:00",
+  "status": "Supplemental reporting prepared during inference; not part of the prospective freeze",
+  "frozen_primary_analysis": "followup/analyze.py",
+  "primary_analysis_sha256": "95ad2b0a14e7e3704b3e0c31b46d1d362d79c9c59462d19295e51708ac022258",
+  "supplemental_sources": {
+    "study_analysis/heldout_review.py": "60a1514e91a4edb3f139d1524357374341489830a0bc46a6d68f43066b9b7aa5",
+    "study_analysis/test_heldout_review.py": "c46b6411de903023e048370e4eaefdd5cf81d0a65d8729c1ba0a818de0f8e4d2",
+    "study_analysis/development_audit.py": "1b58f6c5489de314a35dad8a4165ec5e5dd3a19a379b2e6a93390fe6269e0a53",
+    "study_analysis/repeated_development_review.py": "7892e8d63d640df38bf898624669a6744cbd990294920ad52a1418d2741f9cf5"
+  },
+  "supplemental_tests_passed": 3,
+  "scope": "Repeat/family summaries, paired consistency checks and source-grounded failure descriptions; no new primary estimator, no changed scoring, no trial removal or replacement.",
+  "startup_note": "A task-free GPU availability check in the restricted process could not access Metal. The authorized actual run was launched with local GPU access. No held-out trajectory was attempted or discarded by that initial device check.",
+  "idle_sleep_prevention": "caffeinate -i is tied to the evaluation process and ends with it."
+}

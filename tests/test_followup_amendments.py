@@ -6,7 +6,6 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from followup import tasks as fixture_module
 from followup.core import CONDITIONS,Environment,SCHEMA_HELP,initial_messages
 from followup.evidence import inputs,load_tasks,replay
 from followup.run import execute,make_jobs,trajectory_seed
@@ -94,7 +93,6 @@ class AmendmentTests(unittest.TestCase):
         self.assertEqual(jobs,make_jobs(self.tasks,3,20261111))
         self.assertEqual(len({trajectory_seed(20261111,self.tasks[0]['id'],r) for r in range(3)}),3)
 
-    @unittest.skipUnless(hasattr(fixture_module,'build'), 'Requires withheld private fixture generator/inputs; public replay is tested separately')
     def test_development_only_generator_matches_saved_data(self):
         # Prune the held-out construction before executing any generator code.
         path=Path(__file__).resolve().parents[1]/'followup/tasks.py'
@@ -109,11 +107,10 @@ class AmendmentTests(unittest.TestCase):
         exec(compile(module,str(path),'exec'),scope)
         self.assertEqual(scope['build'](),self.tasks)
 
-    @unittest.skipUnless(hasattr(fixture_module,'build'), 'Requires withheld private fixture generator/inputs; public replay is tested separately')
     def test_replay_keeps_three_repeat_assignments_and_rejects_missing_rows(self):
         task=self.tasks[0]
         rows=[execute(task,c,r,'scripted',12,20261111,fixture='attack') for c in CONDITIONS for r in range(3)]
-        config=dict(inputs=inputs(),backend='scripted',split='dev',task_ids=[task['id']],repeats=3,max_steps=12)
+        config=dict(inputs=inputs(),backend='scripted',split='dev',task_ids=[task['id']],repeats=3,max_steps=12,seed=20261111)
         with tempfile.TemporaryDirectory() as td:
             p=Path(td); (p/'config.json').write_text(json.dumps(config))
             record=p/'trajectories.jsonl'

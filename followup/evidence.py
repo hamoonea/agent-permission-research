@@ -14,7 +14,7 @@ def digest(p):
 def inputs():
     files=[*sorted((ROOT/'followup').glob('*.py')),
            ROOT/'data/followup/dev.json',ROOT/'data/followup/heldout.json',
-           ROOT/'docs/followup-protocol.md']
+           ROOT/'docs/followup-protocol.md', ROOT/'requirements-mlx-lock.txt']
     return {str(p.relative_to(ROOT)):digest(p) for p in files}
 
 
@@ -38,18 +38,25 @@ def read_rows(run):
     return [json.loads(line) for line in p.read_text().splitlines()]
 
 
-def replay(run, complete=True):
-    run=Path(run)
-    config=json.loads((run/'config.json').read_text())
-    if config['inputs']!=inputs(): raise ValueError('Study inputs changed since this run')
-    tasks={t['id']:t for t in load_tasks(config['split'])}
+def trajectory_seed(seed,task_id,repeat):
+    import hashlib
+    # Common seeds across conditions; different workflows/repeats get different seeds.
+    return int(hashlib.sha256(f'{seed}:{task_id}:{repeat}'.encode()).hexdigest()[:8],16)
+
+
+def verify_rows(config, rows, tasks, complete=True):
+    if type(config.get('seed')) is not int: raise ValueError('Missing or invalid base sampling seed')
+    if len(config['task_ids'])!=len(set(config['task_ids'])): raise ValueError('Duplicate task assignment')
+    if not set(config['task_ids'])<=set(tasks): raise ValueError('Unknown task assignment')
+    if any(t['split']!=config['split'] for t in tasks.values()): raise ValueError('Mislabeled split')
     expected={(t,c,r) for t in config['task_ids'] for c in CONDITIONS for r in range(config['repeats'])}
-    rows=read_rows(run)
     observed=set()
     for row in rows:
         key=(row['task_id'],row['condition'],row['repeat'])
         if key not in expected or key in observed: raise ValueError('Duplicate/unplanned trajectory')
         observed.add(key)
+        if type(row.get('rng_seed')) is not int or row['rng_seed']!=trajectory_seed(config['seed'],row['task_id'],row['repeat']):
+            raise ValueError('Sampling seed mismatch')
         task=tasks[row['task_id']]
         if row['family']!=task['family'] or row['variant']!=task['variant'] or row['backend']!=config['backend']:
             raise ValueError('Trajectory metadata mismatch')
@@ -74,6 +81,15 @@ def replay(run, complete=True):
         if row['budget_exhausted']!=exhausted: raise ValueError('Exhaustion mismatch')
         if exhausted and len(row['calls'])!=config['max_steps']: raise ValueError('Premature truncation')
     if complete and observed!=expected: raise ValueError(f'Incomplete run: {len(observed)}/{len(expected)}')
+
+
+def replay(run, complete=True):
+    run=Path(run)
+    config=json.loads((run/'config.json').read_text())
+    if config['inputs']!=inputs(): raise ValueError('Study inputs changed since this run')
+    tasks={t['id']:t for t in load_tasks(config['split'])}
+    rows=read_rows(run)
+    verify_rows(config,rows,tasks,complete)
     return config,rows
 
 
@@ -81,6 +97,8 @@ def validate_freeze(freeze, label, identity):
     if freeze['inputs']!=inputs(): raise ValueError('Frozen study inputs have changed')
     if label not in freeze['models'] or freeze['models'][label]!=identity:
         raise ValueError('Model is not the frozen model for this label')
+    from .runtime import validate_runtime
+    validate_runtime(freeze.get('runtime'))
 
 
 def positive_int(value):

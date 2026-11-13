@@ -1,9 +1,5 @@
 # Amended development study: three repeats and freeze recommendation
 
-> Public-checkpoint note: this branch publishes the amended development work.
-> Full-input commands require the original private fixture files. Use the
-> [public verifier](development-checkpoint.md) to check the published evidence.
-
 Completed November 13, 2026. **The required fixes are implemented and all 432
 development trials are complete.** The earlier evidence and the held-out file
 remain unchanged. No held-out inference or design freeze occurred.
@@ -187,5 +183,5 @@ wall-clock gaps are not included in accumulated trajectory timing.
 - [Earlier development review](followup-full-development-review.md)
 
 The fixes and analysis were prepared with AI assistance. The applicant should
-review and explain their contribution accurately. This public development checkpoint publishes the amended implementation and
-results. The earlier checkpoint and original evidence remain preserved in history.
+review and explain their contribution accurately. The amended implementation and
+results are saved locally; the previously published GitHub checkpoint is unchanged.

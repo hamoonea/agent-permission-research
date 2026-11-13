@@ -22,9 +22,21 @@
     },
     "heldout": {
       "sha256": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
-      "cases": 36,
-      "family_count": 12
+      "families": [
+        "allocation_split",
+        "backup_selection",
+        "batch_quarantine",
+        "delivery_acknowledgment",
+        "dependency_rollout",
+        "duplicate_resolution",
+        "embargo_draft",
+        "expense_reconciliation",
+        "incident_escalation",
+        "renewal_decision",
+        "translation_route",
+        "version_conflict"
+      ],
+      "cases": 36
     }
-  },
-  "publication_note": "Reserved case contents, family identifiers and original generator are withheld; counts and SHA-256 are retained."
+  }
 }

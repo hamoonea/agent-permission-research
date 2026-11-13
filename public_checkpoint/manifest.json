@@ -1,38 +1,61 @@
 {
   "date": "2026-11-13",
   "branch": "development/checkpoint-2026-11-12",
-  "status": "amended development checkpoint; not frozen",
-  "previous_checkpoint_commit": "8beb10e95f852d6a6ee7f0cbd9c08e36f1040019",
-  "active_run": "outputs/followup-dev-v2-repeats3",
-  "withheld_original_inputs": {
+  "status": "complete frozen design and held-out results release",
+  "previous_checkpoint_commit": "824ec954444e7cc990d09f99cc9062b4874599b2",
+  "active_run": "outputs/followup-heldout-qwen3",
+  "freeze_sha256": "2378d1f362a12f375fe5962a21a229f1142a31914119e55e9f1dc888ffd11c62",
+  "heldout_trajectories_sha256": "ea97a44c9cea57c15f10be628670ff910c5676a5dfc0ea4a63cce19b7e02a75f",
+  "published_frozen_inputs": {
+    "followup/__init__.py": "3a7af2912d1b66e83edbac01711f01d508604d291269e40241d0c723cfcaa070",
+    "followup/analyze.py": "95ad2b0a14e7e3704b3e0c31b46d1d362d79c9c59462d19295e51708ac022258",
+    "followup/core.py": "b385b496be696b28441412af57b186db1711f0c80d267259e11a6715ce54ed10",
+    "followup/evidence.py": "3a3494fa2724eba2de7578701fea69a3fc77f2a5ba6dff63218c151cfe45d5a4",
+    "followup/freeze.py": "ad13c43580dbb832f757c95d1d6af337a631e2315a0af22d4d493ff1e8325649",
+    "followup/run.py": "f9520c9a2288332bba17703797df1af89acb12e953fde9bea4416174e44595dd",
+    "followup/runtime.py": "7255708055a0506b341489d31a40f3e8d42e4708a98f32a49af085e2561f5355",
+    "followup/tasks.py": "981ecfff0c5908887e1d23e1566c334021cfe23f2ad46c4756f75f7a49fac642",
+    "followup/transition.py": "db86eceabb940adbba876808aa2a82be0396272088f6f04c2bc57a2e855ce091",
+    "data/followup/dev.json": "6eb99ead90b893bb13bc52c13292659af6b5dbdd5519f1b3ca8af7d4d193defb",
     "data/followup/heldout.json": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
-    "followup/tasks.py": "981ecfff0c5908887e1d23e1566c334021cfe23f2ad46c4756f75f7a49fac642"
+    "docs/followup-protocol.md": "c2cbfeddabbc1a9adb36390d1a1d25600cf1b7ea38cf8c111574040d39ed7518",
+    "requirements-mlx-lock.txt": "31527cccc42bc1b13811e2feb8128882ea3183ea7b10f0e22286a1dac9a56b35"
   },
-  "snapshot_omissions": [
+  "heldout_trials": 432,
+  "heldout_unsuccessful_trials": 195,
+  "repeats": 3,
+  "all_failures_preserved": true,
+  "original_results_modified": false,
+  "heldout_evaluated": true,
+  "withheld_original_inputs": {},
+  "formerly_reserved_inputs_now_released": [
+    "data/followup/heldout.json",
     "followup/tasks.py",
-    "outputs/followup-amendment-v2/prior-source/data/followup/manifest.json",
-    "outputs/followup-dev-v2-repeats3/source-snapshot/data/followup/heldout.json",
-    "outputs/followup-dev-v2-repeats3/source-snapshot/followup/tasks.py"
+    "original source snapshot copies"
   ],
+  "omitted_local_operational_files": [
+    "outputs/followup-freeze.json.qwen3-4b.started.json",
+    "outputs/followup-publication.json"
+  ],
+  "model_weights_included": false,
   "public_adaptations": [
     "README.md",
-    "data/followup/manifest.json",
-    "followup/tasks.py",
-    "tests/test_followup.py",
-    "tests/test_followup_amendments.py",
-    "docs/followup-runbook.md",
-    "docs/followup-amendment-v2.md",
-    "docs/followup-amended-development-review.md",
-    "docs/followup-development-log.md"
+    ".gitignore",
+    "public_checkpoint/verify.py",
+    "public_checkpoint/manifest.json",
+    "docs/development-checkpoint.md",
+    "docs/frozen-study-release.md",
+    "public_checkpoint/test_frozen_release.py"
   ],
-  "original_results_modified": false,
-  "heldout_evaluated": false,
-  "prior_boundary_note": "The copied boundary record describes analysis completion before publication; its new_results_pushed_to_github=false field is historical.",
+  "historical_status_note": "Original freeze, verification and analysis records retain the status at their creation, including published_to_github=false and pre-evaluation notes. This publication manifest records the later release.",
   "validation": {
-    "public_development_records_replayed": 432,
-    "public_tests_passed": 34,
-    "private_input_tests_skipped": 3,
-    "public_source_inputs_verified": 8,
-    "withheld_input_hashes_are_commitments_only": true
+    "repository_tests_passed": 58,
+    "analysis_and_publication_tests_passed": 19,
+    "tests_skipped": 0,
+    "heldout_trajectories_replayed": 432,
+    "amended_development_trajectories_replayed": 432,
+    "earlier_evidence_files_verified": 68,
+    "frozen_inputs_and_snapshots_verified": 13,
+    "failure_trace_sections_verified": 195
   }
 }
