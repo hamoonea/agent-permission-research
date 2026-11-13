@@ -5,8 +5,10 @@ This release publishes the unchanged frozen design and all 432 held-out trials:
 unsuccessful trials remain in the raw evidence, summaries and failure traces.
 No trial was discarded, replaced or rerun for publication.
 
-The release continues the `development/checkpoint-2026-11-12` branch. The original
-pilot on `main` and earlier checkpoint commits remain unchanged. The formerly
+The complete study was first published on `development/checkpoint-2026-11-12`
+at commit `b56bf073dc29891a9086b707f3ea7efd67a69eb3`. Integration into `main`
+adds the completed study and updates its README overview; the original pilot
+files, earlier checkpoint commits and frozen evidence remain unchanged. The formerly
 reserved synthetic dataset, original generator and source snapshots are now
 public because evaluation has finished. Future use of these public cases cannot
 be treated as a fresh held-out confirmation of this study.
@@ -73,6 +75,11 @@ statements describe when those records were created. In particular,
 `published_to_github=false`, “saved locally” and pre-evaluation status notes in
 earlier records are historical; the publication record linked above describes
 this later release. They were not rewritten to change the historical record.
+
+The publication manifest's branch field records the initial release branch.
+The current README presents the completed study for `main`; this guide and the
+development-checkpoint pointer clarify that publication history. These documentation
+updates do not alter any frozen input, original result, score or hash-bound report.
 
 Publication-only changes are the README banner, this guide, the development
 checkpoint pointer, the public verifier and its tests, publication metadata and

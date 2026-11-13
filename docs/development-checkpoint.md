@@ -1,6 +1,7 @@
 # Development checkpoint history
 
-This branch now contains the complete frozen study and held-out results. See the
+The complete frozen study and held-out results were published on the development
+branch and are integrated into `main` with an updated README. See the
 [current publication and verification guide](frozen-study-release.md).
 
 The amended development checkpoint is preserved at commit
@@ -12,7 +13,7 @@ publication manifest is retained in
 
 The preliminary 144-trial checkpoint remains at commit
 `8beb10e95f852d6a6ee7f0cbd9c08e36f1040019`. Neither checkpoint nor the original pilot
-on `main` has been rewritten. Original development evidence remains unchanged.
+has been rewritten. The original pilot files and all development evidence remain unchanged.
 
 The [amended development review](followup-amended-development-review.md) records
 the earlier findings: 54/108 authorized successes for instructions only and
