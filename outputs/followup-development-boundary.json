@@ -1,0 +1,9 @@
+{
+  "heldout_sha256_before": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+  "heldout_size": 101050,
+  "scope": "Development inference only; no held-out modifications or inference authorized",
+  "heldout_sha256_after": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+  "heldout_unchanged": true,
+  "heldout_model_run_directories": [],
+  "completed_development_trajectories": 144
+}

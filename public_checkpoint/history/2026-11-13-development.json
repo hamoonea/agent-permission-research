@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-13",
+  "branch": "development/checkpoint-2026-11-12",
+  "status": "amended development checkpoint; not frozen",
+  "previous_checkpoint_commit": "8beb10e95f852d6a6ee7f0cbd9c08e36f1040019",
+  "active_run": "outputs/followup-dev-v2-repeats3",
+  "withheld_original_inputs": {
+    "data/followup/heldout.json": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+    "followup/tasks.py": "981ecfff0c5908887e1d23e1566c334021cfe23f2ad46c4756f75f7a49fac642"
+  },
+  "snapshot_omissions": [
+    "followup/tasks.py",
+    "outputs/followup-amendment-v2/prior-source/data/followup/manifest.json",
+    "outputs/followup-dev-v2-repeats3/source-snapshot/data/followup/heldout.json",
+    "outputs/followup-dev-v2-repeats3/source-snapshot/followup/tasks.py"
+  ],
+  "public_adaptations": [
+    "README.md",
+    "data/followup/manifest.json",
+    "followup/tasks.py",
+    "tests/test_followup.py",
+    "tests/test_followup_amendments.py",
+    "docs/followup-runbook.md",
+    "docs/followup-amendment-v2.md",
+    "docs/followup-amended-development-review.md",
+    "docs/followup-development-log.md"
+  ],
+  "original_results_modified": false,
+  "heldout_evaluated": false,
+  "prior_boundary_note": "The copied boundary record describes analysis completion before publication; its new_results_pushed_to_github=false field is historical.",
+  "validation": {
+    "public_development_records_replayed": 432,
+    "public_tests_passed": 34,
+    "private_input_tests_skipped": 3,
+    "public_source_inputs_verified": 8,
+    "withheld_input_hashes_are_commitments_only": true
+  }
+}

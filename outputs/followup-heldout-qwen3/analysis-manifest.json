@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-13T20:42:08.988857+00:00",
+  "status": "Held-out evaluation, frozen primary analysis and supplemental failure review complete",
+  "freeze_sha256": "2378d1f362a12f375fe5962a21a229f1142a31914119e55e9f1dc888ffd11c62",
+  "report": "docs/followup-heldout-results.md",
+  "report_sha256": "091d826b509916d7cbc5bf0fdf515a56489adc94953228c361bb6024f08e7bfc",
+  "artifacts": {
+    "outputs/followup-heldout-qwen3/config.json": "8c74096c9bc748bce770191a9b50793412ecc99d521fd5d636a2bfa94ecedfa0",
+    "outputs/followup-heldout-qwen3/failure-traces.md": "bf6c8d197b113114bdceafba6cc4fc263ad1bfd6da5cb855fc17cd750653958f",
+    "outputs/followup-heldout-qwen3/heldout-review.json": "07c9a1ded0239c12b1cf3a80fa9b89d0917b9ade0c4fc787ebb9edceba979bd8",
+    "outputs/followup-heldout-qwen3/heldout-review.md": "a2be4ee18370c61403ae4b6cc39f06ae6f8e8b0e71b0d596e65261fff422b860",
+    "outputs/followup-heldout-qwen3/results.md": "37abc37af2e48122c93f641bc6d900c1e488bdd30d0be7f98f4c5b711c000f2f",
+    "outputs/followup-heldout-qwen3/sessions.jsonl": "232230fd5d21ddab99e15875b4e84c38e708cc94b08b6fc45a380bfe5c9a0ab7",
+    "outputs/followup-heldout-qwen3/summary.json": "b4372bbe461e6a85be61b446cab3f628be3869dceac24f22eaa8988b985c0f3d",
+    "outputs/followup-heldout-qwen3/trace-findings.json": "d15ecb21f1dcb70dbc276a44bf90c5bd092c688e201f0affd77b5f9985213d0f",
+    "outputs/followup-heldout-qwen3/trajectories.jsonl": "ea97a44c9cea57c15f10be628670ff910c5676a5dfc0ea4a63cce19b7e02a75f",
+    "outputs/followup-heldout-qwen3/verification.json": "c91728372704793744260198f961cd1330fca83411adc91a560c8ee6aa21dc18"
+  },
+  "trials": 432,
+  "unsuccessful_trials_preserved": 195,
+  "repeats": 3,
+  "primary_authorized_success": {
+    "baseline": 42,
+    "permissions": 63,
+    "recovery": 69,
+    "approval": 63
+  },
+  "primary_comparison": {
+    "difference": 0.05555555555555556,
+    "lower": 0.0,
+    "upper": 0.1388888888888889,
+    "families": 12
+  },
+  "all_frozen_inputs_unchanged": true,
+  "supplemental_report_tests_passed": 3,
+  "heldout_dataset_bytes_unchanged": true,
+  "published_to_github": false
+}

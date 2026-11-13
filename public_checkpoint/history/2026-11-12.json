@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-12",
+  "branch": "development/checkpoint-2026-11-12",
+  "status": "preliminary development checkpoint; not frozen",
+  "original_commit": "b77ba9d6c266e435ab2d0572695687fd6438a402",
+  "withheld_original_inputs": {
+    "data/followup/heldout.json": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+    "followup/tasks.py": "c2d992a2b216b3060cfc2a87897498876adc86f727e22814c895d191cd3aa375"
+  },
+  "snapshot_omissions": [
+    "followup/tasks.py",
+    "outputs/followup-dev-v1/source-snapshot/data/followup/heldout.json",
+    "outputs/followup-dev-v1/source-snapshot/followup/tasks.py",
+    "outputs/followup-smoke-v1/source-snapshot/data/followup/heldout.json",
+    "outputs/followup-smoke-v1/source-snapshot/followup/tasks.py",
+    "outputs/followup-smoke-v2/source-snapshot/data/followup/heldout.json",
+    "outputs/followup-smoke-v2/source-snapshot/followup/tasks.py"
+  ],
+  "public_adaptations": [
+    "README.md",
+    ".gitignore",
+    "data/followup/manifest.json",
+    "followup/tasks.py",
+    "tests/test_followup.py",
+    "docs/followup-runbook.md",
+    "docs/followup-full-development-review.md"
+  ],
+  "original_results_modified": false
+}

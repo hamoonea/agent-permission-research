@@ -1,0 +1,42 @@
+{
+  "version": "scoped-recovery-v2.1",
+  "status": "amended development fixtures; held-out file unchanged; not frozen",
+  "splits": {
+    "dev": {
+      "sha256": "6eb99ead90b893bb13bc52c13292659af6b5dbdd5519f1b3ca8af7d4d193defb",
+      "families": [
+        "budget_balance",
+        "contact_draft",
+        "document_archive",
+        "invoice_route",
+        "maintenance_window",
+        "meeting_notice",
+        "package_receipt",
+        "release_status",
+        "stock_reorder",
+        "support_handoff",
+        "ticket_priority",
+        "training_roster"
+      ],
+      "cases": 36
+    },
+    "heldout": {
+      "sha256": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+      "families": [
+        "allocation_split",
+        "backup_selection",
+        "batch_quarantine",
+        "delivery_acknowledgment",
+        "dependency_rollout",
+        "duplicate_resolution",
+        "embargo_draft",
+        "expense_reconciliation",
+        "incident_escalation",
+        "renewal_decision",
+        "translation_route",
+        "version_conflict"
+      ],
+      "cases": 36
+    }
+  }
+}

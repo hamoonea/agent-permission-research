@@ -1,0 +1,158 @@
+# Development validation log — November 11, 2026
+
+## November 13 frozen held-out evaluation
+
+At the user's explicit request, the frozen Qwen3-4B evaluation completed all
+432 held-out assignments in one session with three repeats, no replacements,
+zero runtime/schema errors and no exhausted budgets. All records passed replay.
+Authorized successes were 42/108 baseline, 63/108 permissions, 69/108 recovery and
+63/108 perfect simulated approval. The primary difference was +5.6 percentage
+points, with the frozen family-cluster interval [0.0, 13.9]. All 195 unsuccessful
+trials remain in the evidence. The observed gain covers two revoked-source cases;
+the detailed report distinguishes final-outcome changes from source-access credit
+and documents a partial-state regression in an already-failed case.
+
+All 13 frozen inputs, model hashes, runtime and dataset bytes remain unchanged.
+The 68 earlier evidence files are preserved. Supplemental descriptive reporting
+was added outside the frozen experiment and checked using development fixtures.
+No design, primary scorer or estimator changed. See the
+[held-out results](followup-heldout-results.md) and linked complete evidence.
+
+## November 13 verification fixes and freeze
+
+The user reported review of the amended 432-trial study with no requested changes
+and authorized a freeze if the remaining verification fixes passed checks.
+Runtime environment enforcement and private replay seed checks are implemented;
+the protocol clarifies that required source/backup access does not imply every
+supporting lookup is enforced. Experimental behavior and original scores are unchanged.
+
+All 65 development-only/pilot/guard tests passed in the inference environment, as
+did a 432-trajectory scripted development run with replay, analysis and no-op
+resume. An explicit transition verified all 432 original model records with both
+archived and current implementations and retained all 68 prior evidence files.
+The prospective freeze was created at 2026-11-13T19:01:54.770000+00:00 and then
+validated against 13 inputs, 12 model files and 39 installed distribution versions.
+No held-out evaluation was started, and its dataset hash is unchanged.
+See the [completion record](followup-freeze-completion.md) and linked evidence.
+
+## Implemented and checked
+
+- 72 synthetic cases in 24 workflow families; 12 development / 12 held-out.
+- 30 automated tests passed, including the 12 original pilot tests.
+- 864 software-only trajectories passed runner, analysis and replay checks:
+  both splits, all four conditions, reference/attack/recovery fixtures.
+  These temporary scripted runs were discarded after verification; they are not
+  model findings. The automated suite retains the corresponding feasibility,
+  attack, recovery, scoring, resume, freeze and evidence-integrity tests.
+- Original v1 code and results remain separate from followup/.
+
+## Initial model check and amendment
+
+`outputs/followup-smoke-v1` was stopped after four completed development
+trajectories, with a fifth interrupted. The small model sometimes emitted bare
+finish objects without the tool envelope. The generic system prompt was amended
+to show valid read and finish JSON examples. No task answer was added.
+
+During code review, task correctness was also strengthened to reject unsolicited
+or duplicate messages even to permitted destinations. Graceful interruption now
+records the interrupted trajectory as a failure before stopping. Source snapshots
+and library versions are retained for subsequent runs.
+
+The incomplete first run and its exact source snapshot are preserved, with no
+aggregate research claim. This was development, not held-out selection.
+
+## Completed development smoke test
+
+`outputs/followup-smoke-v2` contains 24 genuine local-model trajectories:
+two development workflow families x three variants x four conditions, one sampled
+repeat at temperature 0.2. Model files match the recorded local Qwen3 4B identity.
+Twelve turns and 256 tokens per turn were the budgets. Two task-free warmups were
+performed. All trajectories passed replay; there were zero runtime errors,
+invalid action schemas, or budget exhaustions. All 24 produced valid finish(done),
+which does not mean all tasks were correctly completed.
+
+| Condition | Correct raw outcome | Authorized success | Trajectories with executed violations |
+|---|---:|---:|---:|
+| Baseline | 3/6 | 1/6 | 4/6 |
+| Permissions | 3/6 | 3/6 | 0/6 |
+| Recovery guidance | 1/6 | 1/6 | 0/6 |
+| Perfect simulated approval | 3/6 | 3/6 | 0/6 |
+
+Recovery guidance did not improve success in this tiny development sample. Do not
+present these six cases as six independent workflows: there are only two families.
+The generic analyzer emits exploratory intervals; intervals with only two families
+are not suitable evidence for a substantive treatment claim. The sample verifies
+execution and exposes failure modes, not the study's hypothesis.
+
+Observed development failures include incorrect priority classification, changing
+a correct field value to an incorrect one, finishing before an update, and joining
+two permitted email addresses into one disallowed recipient string. Permissions
+and ideal approval produced matching prompt/action paths, as expected from equal
+coverage and identical feedback. This is a useful implementation check.
+
+## Decisions identified after the smoke test (historical)
+
+1. Review the task wording and scoring with the applicant and an external reviewer.
+   In particular, check whether partial-functionality outages in ticket triage
+   are sufficiently unambiguous. Do not simplify cases merely to increase success.
+2. Run all 12 development families (144 trajectories at one repeat). Preserve the
+   current results and record any justified prompt/budget/task amendments.
+3. Decide whether the default model is adequate and whether a second model is
+   feasible, using development evidence only.
+4. Freeze the final design, then run the reserved evaluation as described in the
+   runbook. No held-out model inference or prospective freeze has occurred yet.
+
+These implementation changes were prepared with Codex assistance. The applicant
+should personally review the experiment, reproduce key results, discuss the
+limitations, and accurately document their intellectual contributions. No external
+review, recommendation, publication, or GitHub push was performed in this work.
+
+## Full development run completed — November 11, 2026
+
+The requested full run is saved in `outputs/followup-dev-v1`: all 144 trajectories,
+12 families, three variants, four conditions, one sampled repeat. No run settings,
+inference code, datasets or primary scoring changed. Zero runtime exceptions;
+all records passed replay. Authorized success: baseline 12/36, permissions 24/36,
+recovery 21/36, approval 24/36. There were 89 invalid tool calls across 14 trials,
+with six turn-limit failures. These model behavior failures remain included.
+
+The new development-only diagnostic audit and six tests are in `study_analysis/`.
+The original primary scores are not replaced by the post-hoc sensitivity analysis.
+Ignoring harmless intermediate drafts on send tasks adds one success per condition
+and leaves the recovery/permissions gap unchanged. Tool-schema errors, draft-only
+notifications, ambiguous partial-outage wording, and skipped lookups are documented
+in [the full pre-freeze review](followup-full-development-review.md).
+
+The held-out SHA-256 is unchanged; no held-out model run or design freeze occurred.
+Next: agree on the justified contract/rubric amendments, rerun development under
+the final common interface, examine sampled repeats, and seek actual reviewer
+feedback before freezing. Do not tune the treatment to obtain a positive result.
+
+## Amended three-repeat development run completed — November 13, 2026
+
+The common tool contract, uniform invalid-schema feedback, draft rubric, and nine
+development request clarifications were fixed before inference on November 12.
+No task facts, goals, scope definitions, attack probes or reference plans changed.
+The private reserved generator construction and held-out data remained unchanged.
+See [the amendment](followup-amendment-v2.md) for the prespecified settings and checks.
+
+All 432 genuine model trajectories completed and passed replay: 12 development
+families, three variants, four conditions and three sampled repeats. Authorized
+success was baseline 54/108; permissions, recovery and simulated approval 102/108
+each. Each repeat gave 18/36 and 34/36 respectively. All 108 permissions/recovery
+action pairs matched; the observed difference was zero. Its degenerate bootstrap
+interval does not establish equivalence beyond this small authored suite.
+
+There were four invalid calls, all corrected successfully, no runtime exceptions,
+and no turn-limit failures. All 18 gated failures were injected/revoked budget
+cases that skipped the ledger lookup. Aggregate raw completion was 102/108 in
+every condition, with different failed cases under baseline and enforcement.
+Nineteen development-focused tests passed. The full raw traces, audit and repeat
+analysis are saved under `outputs/followup-dev-v2-repeats3`.
+
+All previous evidence hashes and the held-out hash are unchanged. No held-out
+inference, design freeze, external reviewer endorsement, or new GitHub push was
+performed. The temporary idle-sleep prevention ended with the model process.
+The [full amended review](followup-amended-development-review.md) recommends
+focused human review followed by a freeze of this version, retaining genuine
+model failures and the null development finding.

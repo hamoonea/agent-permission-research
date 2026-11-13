@@ -1,0 +1,23 @@
+{
+  "verified_at": "2026-11-13T19:02:29.463414+00:00",
+  "freeze_path": "outputs/followup-freeze.json",
+  "freeze_sha256": "2378d1f362a12f375fe5962a21a229f1142a31914119e55e9f1dc888ffd11c62",
+  "frozen_at": "2026-11-13T19:01:54.770000+00:00",
+  "status": "frozen and post-freeze verification passed; held-out evaluation not started",
+  "study_inputs_verified": 13,
+  "model_files_verified": 12,
+  "installed_distribution_versions_frozen": 39,
+  "development_records_verified": 432,
+  "original_evidence_files_unchanged": 68,
+  "heldout_sha256": "2730b1b7237af2670dd30e8e41af2d0685cb5565698f92bdf56e39d4493c9e91",
+  "heldout_unchanged": true,
+  "heldout_tasks_loaded": false,
+  "heldout_inference_performed": false,
+  "evaluation_started_claims": [],
+  "checks_record": "outputs/followup-verification-checks-final.json",
+  "checks_record_sha256": "57260cec367f8e67b1d71ea7a9bd2df69578a9baab23637c4f4ff08fb88f3225",
+  "scripted_development_check": "outputs/followup-verification-dev-check",
+  "scripted_trajectories_sha256": "ba9da63b2ce326187527eea92df3b5a112dc38ff2601b9a7bace698b62e9d262",
+  "transition_manifest_sha256": "fc85fdbf34b472a2ae32847c6edeca3e2ea806b70b2f24b36afd5a742c47ebfe",
+  "new_changes_pushed_to_github": false
+}

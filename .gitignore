@@ -4,3 +4,8 @@ __pycache__/
 .DS_Store
 models/
 *.zip
+
+# Per-machine evaluation locks and credentials are not publication artifacts.
+*.started.json
+.env
+.env.*

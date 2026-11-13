@@ -1,0 +1,8 @@
+{
+  "tests_run": 65,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "all_passed": true,
+  "original_followup_module_scope": "All tests except full-split generation; setup loads development JSON only."
+}
