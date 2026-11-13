@@ -1,32 +1,35 @@
-# Development checkpoint — November 12, 2026
+# Amended development checkpoint — November 13, 2026
 
-This branch preserves preliminary development work before the recommended design
-amendments. It is not a frozen design, preregistration, or final held-out result.
-The original 144 development trajectories, scores, run configuration, model hashes,
-failure audit, and negative recovery finding are published without alteration.
-The original pilot on main remains unchanged by this branch.
+This branch publishes the recommended amendments and all 432 genuine development
+trajectories: 36 cases × four conditions × three prespecified repeats. It is not a
+frozen design, preregistration, or final held-out result. The earlier 144-trial
+study and its negative recovery finding remain unaltered. The original pilot on
+main remains unchanged by this branch.
 
 ## Included
 
 - The development dataset: 12 workflow families, 36 cases.
-- Environment, scoring, runner, analyzer, freeze guard, and audit implementation.
-- All 144 genuine development trajectories plus the earlier smoke evidence, with
-  failures retained. Overlapping smoke trials are not independent observations.
-- Protocol, failure review, reviewer checklist, and completion schedule.
-- Development-only diagnostic tests and a public evidence verifier.
+- Amended common tool instructions, schema feedback, development task wording,
+  and harmless-intermediate-draft scoring, specified before the new inference.
+- All 432 trajectories, configuration, source commitments, summaries, failure
+  analysis, repeat stability review, and limitations.
+- Earlier development and smoke evidence, retained without modification.
+- Development tests and a verifier that works with this public export.
 
 ## Withheld until evaluation is complete
 
-The reserved dataset and its original generator contain the held-out cases.
-They are omitted from the public tree and every source snapshot. The dataset
-manifest keeps only held-out counts and its SHA-256 commitment. The original
-generator's SHA-256 remains in the unmodified run configuration.
+The reserved dataset, its original generator, and all copies of both are omitted.
+The earlier private dataset manifest is also omitted from the amendment archive
+because it identifies reserved families. The public dataset manifest keeps only
+reserved counts and the SHA-256 commitment. The unmodified model-run configuration
+retains the original generator hash.
 
-`followup/tasks.py` in this public branch is an explicitly labeled path shim. It
-does not contain cases, build a dataset, or match the original generator hash.
-All original local experiment files remain unchanged. The publication manifest
-records the omissions and presentation adaptations. No held-out inference or
-design freeze was performed for publication.
+`followup/tasks.py` in this branch is an explicitly labeled path shim. It contains
+no cases and cannot generate a dataset. Its bytes do not match the original
+generator commitment. The publication manifest records these omissions and
+presentation adaptations. No held-out inference or design freeze was performed.
+The copied amendment boundary record describes analysis completion before
+publication; its `new_results_pushed_to_github=false` field is historical.
 
 ## Verify the published development evidence
 
@@ -34,39 +37,43 @@ From the repository root, with Python 3.10 or later:
 
 ```sh
 python3 -B -m public_checkpoint.verify
-python3 -B -m unittest public_checkpoint.test_verify study_analysis.test_development_audit -v
+python3 -B -m unittest public_checkpoint.test_verify study_analysis.test_development_audit study_analysis.test_repeated_development_review -v
 python3 -B -m unittest discover -s tests -v
 ```
 
-The public verifier hashes the eight available original source/data/protocol
-inputs and their snapshots, replays all 144 event histories, checks states,
-transcripts and scores, and reproduces the per-trajectory failure diagnoses. It
-explicitly reports that the two withheld input hashes cannot be independently
-verified from this checkout. It never runs a model or opens reserved cases.
+The verifier hashes the eight available original source/data/protocol inputs and
+their snapshots, replays all 432 event histories, checks assignments, seeds,
+transcripts, states and scores, and reproduces per-trajectory diagnoses, condition
+and variant summaries, paired comparisons, and repeat stability/accounting.
+The two withheld input hashes are commitments that cannot be independently
+verified from this checkout. The verifier never runs a model or opens reserved cases.
 
-The full private-fixture test module is intentionally skipped in a public checkout;
-the original pilot tests and the ten public replay/diagnostic tests are runnable.
-Earlier counts such as 30 tests and 864 scripted checks describe the original
-private workspace, not the smaller public test surface.
+The full private-fixture test module and two amendment tests that need the private
+generator or complete private input set are deliberately skipped. All other public
+tests run normally. Historical private-workspace test counts describe a different
+test surface.
 
 The unchanged full-input commands (`followup.run`, `followup.analyze`,
-`followup.freeze`, and the diagnostic audit CLI) require the original private
-generator and reserved dataset. They are preserved for source review and later
-reproduction; do not present them as runnable from this incomplete public export.
-Use `public_checkpoint.verify` for the development evidence now. Replaying saved
-evidence checks software consistency, not independent model reproducibility.
+`followup.freeze`, and the diagnostic/repeat-review CLIs) require private inputs.
+They remain available for source review and later reproduction; use the public
+verifier for this incomplete export. Replay establishes software consistency,
+not independent model reproducibility.
+
+To verify the earlier 144-trial checkpoint, use a separate checkout of commit
+`8beb10e95f852d6a6ee7f0cbd9c08e36f1040019` and its public verifier. The current
+implementation and verifier target the amended study, not the earlier rubric.
 
 ## Findings and next decisions
 
-Authorized success was 12/36 for instructions only, 24/36 for basic permissions,
-21/36 for recovery guidance, and 24/36 for perfect simulated approval. The gate
-prevented covered scope violations, but this does not establish production safety.
-The exploratory recovery result is negative and remains visible.
+Authorized success is 54/108 for instructions only and 102/108 for each gated arm.
+All three repeats have the same per-case success outcomes. Recovery guidance adds
+no observed benefit over basic permissions; this null result does not establish
+equivalence. The remaining gated failures concern budget reasoning and required
+ledger evidence. Zero covered violations in the gated arms does not establish
+production safety.
 
-Before freezing, clarify common tool instructions, resolve the harmless-draft
-scoring ambiguity, clarify development task wording, and rerun the amended design
-with prespecified sampled repeats. Seek actual external feedback and accurately
-disclose AI assistance. See the [full review](followup-full-development-review.md).
-
-Publishing this checkpoint does not implement those research amendments or permit
-inspection of reserved cases for tuning. The held-out dataset remains unchanged.
+The [amended development review](followup-amended-development-review.md) explains
+the failures, the descriptive before/after comparison, and the recommendation for
+focused external review before freezing. Publishing this checkpoint does not
+freeze the design or authorize tuning on reserved cases. The held-out dataset is
+unchanged and unevaluated.

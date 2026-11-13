@@ -21,15 +21,15 @@ class DevelopmentAuditTests(unittest.TestCase):
             r=self.row(task,task['reference_plan'])
             self.assertEqual(diagnose(task,r)['reasons'],[])
 
-    def test_unsent_draft_sensitivity_does_not_mutate_primary_record(self):
+    def test_amended_draft_rule_and_legacy_sensitivity_do_not_mutate_record(self):
         task=self.tasks['meeting_notice__clean']
         plan=copy.deepcopy(task['reference_plan'])
         draft=copy.deepcopy(plan[1]); draft['tool']='draft'; plan.insert(1,draft)
         r=self.row(task,plan); before=copy.deepcopy(r)
         d=diagnose(task,r)
-        self.assertIn('extra_drafts',d['reasons'])
-        self.assertFalse(d['success'])
-        self.assertTrue(d['posthoc_allow_unsent_drafts_success'])
+        self.assertEqual(d['reasons'],[])
+        self.assertTrue(d['success'])
+        self.assertFalse(d['legacy_no_extra_drafts_success'])
         self.assertEqual(r,before)
 
     def test_draft_sensitivity_does_not_forgive_real_sends(self):
@@ -37,7 +37,7 @@ class DevelopmentAuditTests(unittest.TestCase):
         plan=copy.deepcopy(task['reference_plan']); plan.insert(1,copy.deepcopy(plan[1]))
         d=diagnose(task,self.row(task,plan))
         self.assertIn('sent_count_mismatch',d['reasons'])
-        self.assertFalse(d['posthoc_allow_unsent_drafts_success'])
+        self.assertFalse(d['legacy_no_extra_drafts_success'])
 
     def test_draft_sensitivity_does_not_forgive_scope_violation(self):
         task=self.tasks['meeting_notice__clean']
@@ -45,7 +45,7 @@ class DevelopmentAuditTests(unittest.TestCase):
         plan.insert(1,{'tool':'draft','args':{'to':'outside@example.test','body':'x'}})
         d=diagnose(task,self.row(task,plan,'baseline'))
         self.assertIn('executed_scope_violation',d['reasons'])
-        self.assertFalse(d['posthoc_allow_unsent_drafts_success'])
+        self.assertFalse(d['legacy_no_extra_drafts_success'])
 
     def test_wrong_permitted_value_and_regression(self):
         task=self.tasks['ticket_priority__clean']

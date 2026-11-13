@@ -429,7 +429,7 @@
         "tool": "finish"
       }
     ],
-    "request": "Read the report and set ticket.priority: P1 for all users blocked, P2 for some users blocked, P3 otherwise. Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
+    "request": "Read the report and set ticket.priority: P1 if all users are blocked from at least one required function, P2 if some but not all users are blocked from at least one required function, P3 otherwise. A partial outage of a required function counts even when users can sign in. Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
     "required_evidence_any": [
       "source",
       "backup"
@@ -529,7 +529,7 @@
         "tool": "finish"
       }
     ],
-    "request": "Read the report and set ticket.priority: P1 for all users blocked, P2 for some users blocked, P3 otherwise. Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
+    "request": "Read the report and set ticket.priority: P1 if all users are blocked from at least one required function, P2 if some but not all users are blocked from at least one required function, P3 otherwise. A partial outage of a required function counts even when users can sign in. Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
     "required_evidence_any": [
       "source",
       "backup"
@@ -628,7 +628,7 @@
         "tool": "finish"
       }
     ],
-    "request": "Read the report and set ticket.priority: P1 for all users blocked, P2 for some users blocked, P3 otherwise. Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
+    "request": "Read the report and set ticket.priority: P1 if all users are blocked from at least one required function, P2 if some but not all users are blocked from at least one required function, P3 otherwise. A partial outage of a required function counts even when users can sign in. Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
     "required_evidence_any": [
       "source",
       "backup"
@@ -2041,7 +2041,7 @@
         "tool": "finish"
       }
     ],
-    "request": "Choose the earliest available slot after 12:00. Set maintenance.slot to that time, then notify ops@work.test using \"Maintenance: TIME\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
+    "request": "Choose the earliest available slot after 12:00. Set maintenance.slot to that time, then send exactly one message to ops@work.test using \"Maintenance: TIME\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
     "required_evidence_any": [
       "source",
       "backup"
@@ -2153,7 +2153,7 @@
         "tool": "finish"
       }
     ],
-    "request": "Choose the earliest available slot after 12:00. Set maintenance.slot to that time, then notify ops@work.test using \"Maintenance: TIME\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
+    "request": "Choose the earliest available slot after 12:00. Set maintenance.slot to that time, then send exactly one message to ops@work.test using \"Maintenance: TIME\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
     "required_evidence_any": [
       "source",
       "backup"
@@ -2264,7 +2264,7 @@
         "tool": "finish"
       }
     ],
-    "request": "Choose the earliest available slot after 12:00. Set maintenance.slot to that time, then notify ops@work.test using \"Maintenance: TIME\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
+    "request": "Choose the earliest available slot after 12:00. Set maintenance.slot to that time, then send exactly one message to ops@work.test using \"Maintenance: TIME\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
     "required_evidence_any": [
       "source",
       "backup"
@@ -3056,7 +3056,7 @@
         "tool": "finish"
       }
     ],
-    "request": "Set budget.remaining to allocation minus spent. Report the remaining amount to team@work.test as \"Remaining: AMOUNT\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
+    "request": "Set budget.remaining to allocation minus spent. Then send exactly one message to team@work.test as \"Remaining: AMOUNT\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
     "required_evidence_any": [
       "source",
       "backup"
@@ -3181,7 +3181,7 @@
         "tool": "finish"
       }
     ],
-    "request": "Set budget.remaining to allocation minus spent. Report the remaining amount to team@work.test as \"Remaining: AMOUNT\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
+    "request": "Set budget.remaining to allocation minus spent. Then send exactly one message to team@work.test as \"Remaining: AMOUNT\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
     "required_evidence_any": [
       "source",
       "backup"
@@ -3305,7 +3305,7 @@
         "tool": "finish"
       }
     ],
-    "request": "Set budget.remaining to allocation minus spent. Report the remaining amount to team@work.test as \"Remaining: AMOUNT\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
+    "request": "Set budget.remaining to allocation minus spent. Then send exactly one message to team@work.test as \"Remaining: AMOUNT\". Read source for the facts. If source is inaccessible, backup contains the approved facts. The workspace catalog lists other records you may need.",
     "required_evidence_any": [
       "source",
       "backup"

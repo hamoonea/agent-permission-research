@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 from followup.core import CONDITIONS, Environment, initial_messages
+from followup.run import trajectory_seed
 
 ROOT = Path(__file__).resolve().parents[1]
 WITHHELD = {'followup/tasks.py', 'data/followup/heldout.json'}
@@ -56,6 +57,8 @@ def verify_rows(config, rows, tasks):
         require(key in expected and key not in observed, 'Duplicate or unplanned trajectory')
         observed.add(key)
         task = tasks[row['task_id']]
+        require(row['rng_seed'] == trajectory_seed(config['seed'], row['task_id'], row['repeat']),
+                'Sampling seed mismatch')
         require(row['family'] == task['family'] and row['variant'] == task['variant']
                 and row['backend'] == config['backend'], 'Trajectory metadata mismatch')
         require(len(row['calls']) == len(row['events']), 'Call/event mismatch')
@@ -102,13 +105,34 @@ def verify(run):
     from study_analysis.development_audit import diagnose
     require(audit['rows'] == [diagnose(tasks[r['task_id']], r) for r in rows], 'Diagnostic replay mismatch')
     summary = json.loads((run/'summary.json').read_text())
-    from followup.analyze import summarize
+    from followup.analyze import paired, summarize
     counts = {}
     for condition in CONDITIONS:
         selected = [r for r in rows if r['condition'] == condition]
         success = sum(r['metrics']['authorized_success'] for r in selected)
         counts[condition] = {'authorized_success': success, 'n': len(selected)}
         require(summary['conditions'][condition] == summarize(selected), 'Condition summary mismatch')
+    require(summary['backend'] == config['backend'] and summary['split'] == config['split'],
+            'Summary metadata mismatch')
+    variants = {v: {c: summarize([r for r in rows if r['variant'] == v and r['condition'] == c])
+                    for c in CONDITIONS} for v in ('clean', 'injected', 'revoked')}
+    require(summary['variants'] == variants, 'Variant summary mismatch')
+    comparisons = {f'{t}_minus_{c}': paired(rows, t, c)
+                   for t, c in [('recovery', 'permissions'), ('permissions', 'baseline')]}
+    comparisons['recovery_minus_permissions_revoked'] = paired(
+        [r for r in rows if r['variant'] == 'revoked'], 'recovery', 'permissions')
+    require(summary['paired_authorized_success'] == comparisons, 'Paired comparison mismatch')
+    review = json.loads((run/'repeat-review.json').read_text())
+    for key, path in [('config_sha256', run/'config.json'),
+                      ('trajectories_sha256', run/'trajectories.jsonl'),
+                      ('analysis_sha256', ROOT/'study_analysis/repeated_development_review.py')]:
+        require(review['provenance'][key] == digest(path), 'Repeat review provenance mismatch: '+key)
+    from study_analysis.repeated_development_review import failure_counts, stability
+    require(review['case_stability'] == stability(rows), 'Repeat stability mismatch')
+    require(review['failure_accounting'] == failure_counts(rows), 'Failure accounting mismatch')
+    repeat_summary = {str(rep): {c: summarize([r for r in rows if r['repeat'] == rep and r['condition'] == c])
+                                for c in CONDITIONS} for rep in range(config['repeats'])}
+    require(review['repeat_summary'] == repeat_summary, 'Per-repeat summary mismatch')
     return {
         'status': 'public development replay passed', 'trajectories': len(rows),
         'verified_public_source_inputs': len(PUBLIC_INPUTS),
@@ -120,5 +144,5 @@ def verify(run):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('run', nargs='?', type=Path, default=ROOT/'outputs/followup-dev-v1')
+    parser.add_argument('run', nargs='?', type=Path, default=ROOT/'outputs/followup-dev-v2-repeats3')
     print(json.dumps(verify(parser.parse_args().run), indent=2))

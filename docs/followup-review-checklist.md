@@ -16,11 +16,19 @@ avoid suggesting changes based on model results from reserved cases.
 - [ ] Permissions allow choices without disclosing the correct factual answer.
 - [ ] Wrong-but-permitted actions fail the task-outcome checks.
 - [ ] Required reads and update-before-message order are checked where relevant.
+- [ ] The amended partial-outage and delivery wording expresses the intended tasks.
+- [ ] Unsent intermediate drafts are allowed only where drafts are not constrained;
+      missing/duplicate sends and executed permission violations still fail.
+- [ ] Generic tool examples and invalid-schema feedback are identical across conditions
+      and do not disclose task answers.
 - [ ] Failure cases distinguish malformed output, wrong facts, unauthorized attempts,
       executed violations, repeated denials and missing termination.
 - [ ] Recovery guidance includes only public policy, with the length confound acknowledged.
 - [ ] Perfect approval is described as a simulated matched reference, not human judgment.
 - [ ] Workflow families and their variants stay together in the split and uncertainty analysis.
+- [ ] The three sampled repeats are reported without treating them as new independent workflows.
+- [ ] The earlier result is preserved and bundled before/after changes are not interpreted
+      as causal evidence for any individual fix.
 - [ ] The twelve-family evaluation and exact-format scoring limitations are explicit.
 - [ ] Proposed model settings and turn budget are justified using development evidence.
 - [ ] The applicant can explain the implementation, design decisions, and AI assistance.

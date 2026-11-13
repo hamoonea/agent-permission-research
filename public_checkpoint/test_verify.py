@@ -12,7 +12,7 @@ class PublicReplayTests(unittest.TestCase):
         task = json.loads((ROOT/'data/followup/dev.json').read_text())[0]
         self.tasks = {task['id']: task}
         self.rows = [execute(task, c, 0, 'scripted', 12, 7, fixture='attack') for c in CONDITIONS]
-        self.config = dict(split='dev', backend='scripted', task_ids=[task['id']], repeats=1, max_steps=12)
+        self.config = dict(split='dev', backend='scripted', task_ids=[task['id']], repeats=1, max_steps=12, seed=7)
 
     def test_valid_development_replay(self):
         verify_rows(self.config, self.rows, self.tasks)
@@ -33,6 +33,12 @@ class PublicReplayTests(unittest.TestCase):
         config = dict(self.config, split='heldout')
         with self.assertRaisesRegex(ValueError, 'Only development'):
             verify_rows(config, self.rows, self.tasks)
+
+    def test_changed_sampling_seed_rejected(self):
+        rows = copy.deepcopy(self.rows)
+        rows[0]['rng_seed'] ^= 1
+        with self.assertRaisesRegex(ValueError, 'Sampling seed mismatch'):
+            verify_rows(self.config, rows, self.tasks)
 
 
 if __name__ == '__main__':

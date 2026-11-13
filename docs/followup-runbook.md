@@ -1,11 +1,12 @@
 # Follow-up runbook and completion plan
 
-> Public-checkpoint note: full v2 replay/inference commands below require the
-> private fixture files. For the public development-only verifier and scope,
-> see [development-checkpoint.md](development-checkpoint.md).
+> Public-checkpoint note: this branch publishes the amended development work.
+> Full-input commands require the original private fixture files. Use the
+> [public verifier](development-checkpoint.md) to check the published evidence.
 
-This package is ready for development evaluation. It does not claim a completed
-held-out study. Preserve the original pilot results. All tools are simulated and
+The November 12 amendment is documented in [followup-amendment-v2.md](followup-amendment-v2.md).
+The planned amended development run has three repeats (432 trials). It does not
+claim a completed held-out study. Preserve the original pilot results. All tools are simulated and
 all data are fictional; no external accounts, messages, or API charges are used.
 
 ## What is ready
@@ -43,16 +44,18 @@ other heavy workloads are using the GPU; timing is descriptive even with warmup.
 ## 2. Check the software
 
 ```sh
-python3 -B -m unittest discover -s tests -v
-python3 -B -m followup.run --backend scripted --split dev --fixture attack --output outputs/followup-harness-dev
-python3 -B -m followup.analyze outputs/followup-harness-dev
+python3 -B -m unittest discover -s tests -p test_followup_amendments.py -v
+python3 -B -m unittest study_analysis.test_development_audit study_analysis.test_repeated_development_review -v
+python3 -B -m followup.run --backend scripted --split dev --fixture attack --repeats 3 --output outputs/followup-harness-v2-dev
+python3 -B -m followup.analyze outputs/followup-harness-v2-dev
 ```
 
 The reference/attack/recovery scripted modes know the reference plan. They only
 test the environment. Never describe their success rates as learned-model results.
-Deterministic software tests may inspect both splits; no model should see held-out
-prompts before evaluation. The generated files are already supplied; regenerating
-`python3 -B -m followup.tasks` refuses to silently overwrite different fixtures.
+The commands above use development tasks only; the original full-fixture test
+module is not part of this development-only check. Do not regenerate or edit the
+reserved dataset. Its bytes are retained unchanged; hashing/private snapshot copies
+are integrity operations, not model inference.
 
 ## 3. Development inference
 
@@ -60,11 +63,14 @@ For a small pipeline check, add `--limit-families 2` and use a separate output n
 For the complete development run:
 
 ```sh
-.venv/bin/python -B -m followup.run --backend mlx --model models/qwen3-4b --model-label qwen3-4b --split dev --output outputs/followup-dev-v1
-.venv/bin/python -B -m followup.analyze outputs/followup-dev-v1
+.venv/bin/python -B -m followup.run --backend mlx --model models/qwen3-4b --model-label qwen3-4b --split dev --repeats 3 --output outputs/followup-dev-v2-repeats3
+.venv/bin/python -B -m followup.analyze outputs/followup-dev-v2-repeats3
+.venv/bin/python -B -m study_analysis.development_audit outputs/followup-dev-v2-repeats3
+.venv/bin/python -B -m study_analysis.repeated_development_review outputs/followup-dev-v2-repeats3
 ```
 
-This is 144 trajectories (36 cases x 4 conditions x 1 repeat). Defaults are
+This is 432 trajectories (36 cases x 4 conditions x 3 repeats). The explicit
+repeat argument overrides the CLI default of one. Other settings remain
 temperature 0.2, 12 tool turns, and 256 output tokens per turn. Inspect failures
 before changing settings. Any prompt/task/code change requires a new output
 directory; do not combine old and new conditions. Keep a short log of each change
@@ -87,7 +93,7 @@ development run is required; scripted checks or a two-family smoke run cannot
 serve as the development evidence. Freeze after the final source/protocol edits.
 
 ```sh
-.venv/bin/python -B -m followup.freeze --development-run outputs/followup-dev-v1 --model qwen3-4b=models/qwen3-4b --repeats 3 --temperature 0.2 --max-steps 12 --max-tokens 256 --rationale "Replace this with the actual development-based rationale and review status" --output outputs/followup-freeze.json
+.venv/bin/python -B -m followup.freeze --development-run outputs/followup-dev-v2-repeats3 --model qwen3-4b=models/qwen3-4b --repeats 3 --temperature 0.2 --max-steps 12 --max-tokens 256 --rationale "Replace this with the actual development-based rationale and review status" --output outputs/followup-freeze.json
 ```
 
 For a prespecified second model, add another `--model label=/local/model/path`

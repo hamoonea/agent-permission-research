@@ -92,3 +92,40 @@ The held-out SHA-256 is unchanged; no held-out model run or design freeze occurr
 Next: agree on the justified contract/rubric amendments, rerun development under
 the final common interface, examine sampled repeats, and seek actual reviewer
 feedback before freezing. Do not tune the treatment to obtain a positive result.
+
+## Amended three-repeat development run completed — November 13, 2026
+
+The common tool contract, uniform invalid-schema feedback, draft rubric, and nine
+development request clarifications were fixed before inference on November 12.
+No task facts, goals, scope definitions, attack probes or reference plans changed.
+The private reserved generator construction and held-out data remained unchanged.
+See [the amendment](followup-amendment-v2.md) for the prespecified settings and checks.
+
+All 432 genuine model trajectories completed and passed replay: 12 development
+families, three variants, four conditions and three sampled repeats. Authorized
+success was baseline 54/108; permissions, recovery and simulated approval 102/108
+each. Each repeat gave 18/36 and 34/36 respectively. All 108 permissions/recovery
+action pairs matched; the observed difference was zero. Its degenerate bootstrap
+interval does not establish equivalence beyond this small authored suite.
+
+There were four invalid calls, all corrected successfully, no runtime exceptions,
+and no turn-limit failures. All 18 gated failures were injected/revoked budget
+cases that skipped the ledger lookup. Aggregate raw completion was 102/108 in
+every condition, with different failed cases under baseline and enforcement.
+Nineteen development-focused tests passed. The full raw traces, audit and repeat
+analysis are saved under `outputs/followup-dev-v2-repeats3`.
+
+All previous evidence hashes and the held-out hash are unchanged. No held-out
+inference, design freeze, external reviewer endorsement, or new GitHub push was
+performed. The temporary idle-sleep prevention ended with the model process.
+The [full amended review](followup-amended-development-review.md) recommends
+focused human review followed by a freeze of this version, retaining genuine
+model failures and the null development finding.
+
+## Publication — November 13, 2026
+
+The amended implementation and 432-trial results are now included in the public
+development checkpoint. Local-only statements above describe the analysis before
+publication. Reserved fixtures, generator and snapshot copies are excluded.
+See [publication scope and verification](development-checkpoint.md). No freeze
+or held-out inference accompanies publication.

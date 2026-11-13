@@ -1,9 +1,9 @@
 {
-  "version": "scoped-recovery-v2.0",
-  "status": "candidate fixtures; not a frozen model evaluation",
+  "version": "scoped-recovery-v2.1",
+  "status": "amended development fixtures; held-out file unchanged; not frozen",
   "splits": {
     "dev": {
-      "sha256": "702821147d314158e6d801a303d3bb36c884551cd6cd26eb198e3364173105dd",
+      "sha256": "6eb99ead90b893bb13bc52c13292659af6b5dbdd5519f1b3ca8af7d4d193defb",
       "families": [
         "budget_balance",
         "contact_draft",
@@ -26,5 +26,5 @@
       "family_count": 12
     }
   },
-  "publication_note": "Held-out case contents and original generator are withheld; hashes and counts are retained."
+  "publication_note": "Reserved case contents, family identifiers and original generator are withheld; counts and SHA-256 are retained."
 }

@@ -1,10 +1,27 @@
 # Evaluating permissions and approval in LLM agents
 
-> **Preliminary development checkpoint — November 12, 2026.** No design freeze
-> or held-out evaluation has occurred. Held-out fixtures and the original generator
-> are withheld, including snapshot copies. The public `followup/tasks.py` is a path
-> shim, not the recorded generator. See [checkpoint scope and verification](docs/development-checkpoint.md)
-> before running v2 commands; full private-input replay/inference requires the withheld files.
+> **Amended development checkpoint — November 13, 2026.** The 432-trial study is
+> complete. No design freeze or held-out evaluation has occurred. Reserved cases,
+> their generator and snapshot copies remain private. Use the
+> [public verification instructions](docs/development-checkpoint.md); full private-input
+> v2 commands require withheld files. Earlier evidence is preserved in this branch's history.
+
+## Latest development revision (v2.1)
+
+The amended **432-trial development study** (three repeats) is complete and
+replay-verified. Authorized success: 54/108 for instructions only and 102/108
+for each of basic permissions, recovery guidance and perfect simulated approval.
+Recovery guidance showed no observed advantage; a zero observed difference is
+not evidence of general equivalence. All gated failures were budget tasks with
+omitted factual lookups. The held-out dataset remains unchanged and unevaluated.
+
+- [Amended study results and freeze recommendation](docs/followup-amended-development-review.md)
+- [Changes fixed before inference](docs/followup-amendment-v2.md)
+- [Three-repeat results](outputs/followup-dev-v2-repeats3/results.md)
+
+Nineteen development-focused amendment, diagnostic and repeat-analysis checks
+passed. No design freeze has occurred. The earlier evidence below is preserved
+with its original scoring; these versions should not be pooled as independent trials.
 
 ## Follow-up study (v2): scoped permissions and recovery
 
@@ -22,12 +39,12 @@ and evidence below.
 - [Development validation and initial findings](docs/followup-development-log.md)
 - [Full development study and pre-freeze review](docs/followup-full-development-review.md)
 
-Validation: 30 automated tests and 864 scripted workflow checks passed. A genuine
+Earlier v2.0 validation: 30 automated tests and 864 scripted workflow checks passed. A genuine
 24-trajectory development smoke test completed without runtime/schema errors;
 all records passed replay. Recovery guidance did not improve success in that
 two-family sample. See the development log for counts, amendments, and limits.
 
-The full **144-trajectory development run** is now complete and replay-verified:
+The original **144-trajectory development run** is preserved and replay-verified:
 authorized success was 12/36 for instructions only, 24/36 for basic permissions,
 21/36 for recovery guidance, and 24/36 for perfect simulated approval. The review
 recommends clarifying tool schemas, draft scoring and task wording before freezing.
